@@ -1,0 +1,119 @@
+
+\DeclareOptionBeamer{hideothersubsections}{\PassOptionsToPackage{hideothersubsections}{beamerouterthemesidebar}}
+%\DeclareOptionBeamer{hideallsubsections}{\PassOptionsToPackage{hideallsubsections}{beamerouterthemesidebar}}
+\PassOptionsToPackage{left}{beamerouterthemesidebar}
+\PassOptionsToPackage{width=2cm}{beamerouterthemesidebar}
+\DeclareOptionBeamer{width}{\PassOptionsToPackage{width=#1}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{left}{\PassOptionsToPackage{left}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{right}{\PassOptionsToPackage{right}{beamerouterthemesidebar}}
+\ProcessOptionsBeamer
+
+
+\definecolor{cblue}{HTML}{00336a}
+
+\setbeamercolor{palette primary}{fg=white,bg=cblue}
+\setbeamercolor{primary}{fg=white, bg=cblue}\setbeamercolor{titlelike}{parent=palette primary}
+
+% set title colors
+\setbeamercolor{titlelike}{fg=white, bg=cblue}
+\setbeamercolor{structure}{fg=cblue}
+
+
+\makeatletter
+\setbeamertemplate{headline}
+{
+	\includegraphics[width=\textwidth]{headline_logo.png}
+}
+\setbeamertemplate{footline}{
+	\begin{beamercolorbox}[wd=\textwidth, ht=2mm, dp=1mm]{primary}
+		\hspace{3mm} \inserttitle \hfill
+		\insertsection \hfill
+		\insertframenumber/\inserttotalframenumber \hspace{3mm}
+	\end{beamercolorbox}
+}
+
+\setbeamertemplate{navigation symbols}{} % hide navigation symbols
+
+\setbeamertemplate{frametitle}
+{
+	\vspace{-9mm}\hspace{-20mm}\textcolor{white}{\insertframetitle}
+}
+
+\usefonttheme{structurebold}
+
+
+
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+
+
+
+\useoutertheme[height=0pt]{sidebar} % the selected section
+
+\setbeamercolor{palette sidebar primary}{fg=cblue, bg=white}
+\setbeamercolor{palette sidebar secondary}{fg=cblue, bg=white}
+
+\setbeamercolor*{section in sidebar}{parent=palette sidebar primary}
+\setbeamercolor*{subsection in sidebar}{parent=palette sidebar primary}
+
+\setbeamertemplate{sidebar \beamer@sidebarside}{
+	\vspace{-1mm}
+    \beamer@tempdim=\beamer@sidebarwidth%
+    \insertverticalnavigation{\beamer@sidebarwidth}%
+}
+
+\setbeamertemplate{sidebar canvas \beamer@sidebarside}[horizontal shading][left=cblue,right=cblue]
+
+
+
+
+
+\setbeamertemplate{title page}{
+	\vspace{-10mm}  
+  \begin{minipage}[b][\paperheight]{\textwidth}
+
+    \ifx\inserttitlegraphic\@empty
+    \else\usebeamertemplate*{title graphic}
+    \fi
+    \vfill%
+
+    \ifx\inserttitle\@empty
+    \else\usebeamertemplate*{title}
+    \fi
+    
+    \ifx\insertsubtitle\@empty
+    \else\usebeamertemplate*{subtitle}
+    \fi
+    
+    \usebeamertemplate*{title separator}
+    
+    \ifx\beamer@shortauthor\@empty
+    \else\usebeamertemplate*{author}
+    \fi
+    
+    \ifx\insertdate\@empty
+    \else\usebeamertemplate*{date}
+    \fi
+    
+    \ifx\insertinstitute\@empty
+    \else\usebeamertemplate*{institute}
+    \fi
+    
+    \vfill
+    \vspace*{1mm}
+  \end{minipage}
+}
+
+\setbeamertemplate{title}{
+%  \raggedright%  % <-- Comment here
+  \linespread{1.0}%
+  \inserttitle%
+  \par%
+  \vspace*{0.5em}
+}
+\setbeamertemplate{subtitle}{
+%  \raggedright%  % <-- Comment here
+  \insertsubtitle%
+  \par%
+  \vspace*{0.5em}
+}
+\makeatother

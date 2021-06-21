@@ -1,0 +1,145 @@
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{calc}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% ==================== template : colors ====================
+% define colors 
+\definecolor{primary}{RGB}{67, 85, 96}
+\definecolor{secondary}{RGB}{110, 124, 124}
+\definecolor{tertiary}{RGB}{146, 150, 125}
+\definecolor{quaternary}{RGB}{200, 198, 167}
+
+
+% set colors 
+\setbeamercolor{title}{fg=primary,bg=quaternary}
+\setbeamercolor{frametitle}{fg=primary}
+\setbeamercolor{section in toc}{fg=primary}
+%\setbeamercolor{item}{fg = Ftitle}
+%\setbeamercolor{subitem}{fg = Ftitle}
+%\setbeamercolor{subsubitem}{fg = Ftitle}
+%\setbeamercolor{normal text}{fg = Ftitle}
+
+% Standard block
+\setbeamercolor{block title}{fg = white, bg = primary}
+\setbeamercolor{block body}{bg = quaternary}
+
+% Alert block
+\setbeamercolor{block title alerted}{bg = secondary}
+\setbeamercolor{block body alerted}{bg = quaternary}
+
+% Example block
+\setbeamercolor{block title example}{bg = tertiary}
+\setbeamercolor{block body example}{bg = quaternary}
+
+%sidebar 
+\setbeamercolor{palette sidebar primary}{bg=quaternary, fg=primary}
+\setbeamercolor{sidebar}{parent=palette primary}
+
+% ==================== template : fonts ====================
+\usefonttheme{professionalfonts}
+\setbeamerfont{title}{size = \Huge}
+\setbeamerfont{frametitle}{size = \Large}
+\usefonttheme{structurebold}
+
+% ==================== template : inner theme ====================
+\useinnertheme{default}
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+\setbeamertemplate{itemize items}[triangle]	
+\setbeamertemplate{enumerate items}[default]
+
+
+% ==================== template : outer theme ====================
+
+\setbeamertemplate{navigation symbols}{}
+
+%\setbeamertemplate{headline}[text line]{}
+
+%\setbeamertemplate{frametitle}{%
+%\vspace*{10pt}\hspace*{40pt}\insertframetitle}
+
+\setbeamertemplate{footline}{%
+	\hfill%	
+	\setbeamercolor{pagenumber}{fg=quaternary,bg=primary}		
+	\begin{beamercolorbox}[wd=20pt, ht=10pt, dp=3pt, center]{pagenumber}
+		{\small
+		\insertframenumber/\inserttotalframenumber}
+	\end{beamercolorbox}
+	\kern5pt\vskip5pt}
+
+\useoutertheme[height=0pt]{sidebar}
+%\setbeamertemplate{sidebar left}{%
+%\insertverticalnavigation{5pt} }
+%\usecolortheme{fg=primary}
+%\setbeamersize{sidebar width left=2cm}
+\setbeamercolor{palette sidebar primary}{fg=primary}
+\setbeamercolor{section in sidebar}{fg=quaternary, bg=primary}%\setbeamerfont{section in sidebar}{}
+\setbeamertemplate{sidebar canvas left}%
+[horizontal shading]%
+[left=quaternary, right=quaternary]
+
+
+\makeatletter 
+\setbeamercolor{title}{fg=primary, bg=quaternary}
+\setbeamertemplate{title page}{
+	\hspace*{-\beamer@sidebarwidth-14pt}%
+	\begin{minipage}[b]{\paperwidth}
+		\centering
+		
+		{\Huge\inserttitle}\\
+		\bigskip
+		{\Large subtitle}\\
+		{\color{primary}\rule{0.7\paperwidth}{2pt}}\\
+		\bigskip
+		\today\\
+		\bigskip
+		\begin{columns}
+		\begin{column}{0.5\textwidth}  %%<--- here
+			\centering
+			\textbf{\large Authors}\\
+			\textit{author name}
+		\end{column}
+		\begin{column}{0.5\textwidth}  %%<--- here
+			\centering
+			\textbf{\large Professors}\\
+			\textit{profname}
+		\end{column}
+	\end{columns}	
+	\end{minipage}	
+}
+\makeatother 
+
+
+
+
+
+\title{Software Architektur}
+\subtitle{einführung und Best Practices}
+\author{Moamen Hraden}
+\date{\today}
+
+\begin{document}
+
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+	
+	\section{Agenda}
+	\begin{frame}{Agenda}
+		\tableofcontents
+	\end{frame}
+	
+	
+	\section{Einführung}	
+	\begin{frame}{Einführung}
+		\begin{block}{Definition}
+			dieser box wurde nur zum Demonstrieren eingefügt.
+		\end{block}
+	\end{frame}
+	
+\end{document}

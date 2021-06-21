@@ -1,0 +1,101 @@
+% Copyright 2010 by Malte Schmitz
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+
+% =========================================================
+% option decleration
+% =========================================================
+\DeclareOptionBeamer{hideothersubsections}{\PassOptionsToPackage{hideothersubsections}{beamerouterthemesidebar}}
+%\DeclareOptionBeamer{hideallsubsections}{\PassOptionsToPackage{hideallsubsections}{beamerouterthemesidebar}}
+\PassOptionsToPackage{right}{beamerouterthemesidebar}
+\PassOptionsToPackage{width=2cm}{beamerouterthemesidebar}
+\DeclareOptionBeamer{width}{\PassOptionsToPackage{width=#1}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{left}{\PassOptionsToPackage{left}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{right}{\PassOptionsToPackage{right}{beamerouterthemesidebar}}
+\ProcessOptionsBeamer
+
+
+\mode<presentation>
+
+% =========================================================
+% colors definition
+% =========================================================
+% define colors
+\definecolor{dark-blue}{RGB}{34, 42, 53}
+\definecolor{hell-green}{RGB}{146, 208, 80}
+
+
+% =========================================================
+% color settings
+% =========================================================
+% set global colors
+\setbeamercolor{palette primary}{fg=white,bg=dark-blue}
+\setbeamercolor{palette secondary}{fg=dark-blue}
+\setbeamercolor{palette tertiary}{fg=white,bg=dark-blue}
+\setbeamercolor{palette quaternary}{fg=white,bg=dark-blue}
+
+% set sidebar colors
+\setbeamercolor{palette sidebar primary}{fg=white, bg=dark-blue}
+\setbeamercolor{palette sidebar secondary}{fg=hell-green, bg=dark-blue}
+\setbeamercolor{palette sidebar tertiary}{fg=dark-blue}
+\setbeamercolor{palette sidebar quaternary}{fg=dark-blue}
+
+% set title colors
+\setbeamercolor{titlelike}{parent=palette primary}
+\setbeamercolor{structure}{fg=dark-blue}
+
+% set box title colors
+\setbeamercolor{block title}{fg=dark-blue,bg=hell-green}
+\setbeamercolor{block title alerted}{use=alerted text,fg=black,bg=alerted text.fg!75!bg}
+\setbeamercolor{block title example}{use=example text,fg=black,bg=example text.fg!75!bg}
+
+% set block body colors
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!50!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!50!bg}
+
+% set sidebar colors
+%\setbeamercolor*{section in sidebar shaded}{parent=palette sidebar primary}
+%\setbeamercolor*{section in sidebar}{parent=section in sidebar shaded, fg=dark-blue, bg=dark-blue}
+%\setbeamercolor*{subsection in sidebar shaded}{parent=palette sidebar primary}
+%\setbeamercolor*{subsection in sidebar}{parent=subsection in sidebar shaded, bg=dark-blue}
+\setbeamercolor*{section in sidebar}{parent=palette sidebar primary}
+\setbeamercolor*{subsection in sidebar}{parent=palette sidebar primary}
+
+
+% set page number color
+\setbeamercolor{page number in head/foot}{fg=dark-blue}
+% set alterd text color
+\setbeamercolor{alerted text}{fg=purple}
+
+
+%=============================================================
+% theme settings
+%=============================================================
+
+\useinnertheme{default} % circles, rounded, rectangles
+
+\usefonttheme{structurebold}
+
+\setbeamertemplate{navigation symbols}{} % hide navigation symbols
+\setbeamertemplate{footline}{
+  \hfill%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertframenumber\kern3em\vskip1em%
+}
+
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+
+\useoutertheme[height=0pt]{sidebar} % the selected section 
+
+\setbeamertemplate{sidebar canvas right}[horizontal shading][left=hell-green!80,right=hell-green!80]
+
+
+
+\mode
+<all>

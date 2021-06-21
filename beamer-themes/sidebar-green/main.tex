@@ -1,0 +1,163 @@
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{intersections, positioning}
+
+% customize 
+
+%\useoutertheme{infolines}
+%\useoutertheme[height=0pt, right, hideothersubsections]{sidebar}
+%\useinnertheme{rectangles}
+%\setbeamertemplate{headline}{}
+\usetheme{MyTheme}
+
+\title{Software Architektur}
+\subtitle{einführung und Best Practices}
+\author{Moamen Hraden}
+\date{\today}
+
+\begin{document}
+
+	\begingroup
+	\makeatletter
+	\setlength{\hoffset}{.5\beamer@sidebarwidth}
+	\makeatother
+	\begin{frame}[plain]
+    \titlepage
+	\end{frame}
+	\endgroup
+	
+	
+	\section{Agenda}
+	\begin{frame}{Agenda}
+    \tableofcontents
+	\end{frame}
+
+	
+	
+	
+	\section{Einführung}	
+	\begin{frame}{Einführung}
+		\begin{block}{Definition}
+			dieser box wurde nur zum Demonstrieren eingefügt.
+		\end{block}
+	\end{frame}
+	
+	\section{Einführung(2)}
+	\begin{frame}{Einführung(2)}
+		\begin{alertblock}{Definition}
+			dieser box wurde nur zum Demonstrieren eingefügt.
+		\end{alertblock}
+	\end{frame}
+	
+	\section{Columns}
+	\begin{frame}{Columns}
+		\begin{columns}
+			\begin{column}{5cm}
+				Linke Spalte
+			\end{column}
+			\begin{column}{5cm}
+				Rechte Spalte
+			\end{column}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{overlays}
+		\begin{enumerate}
+			\item microservices 
+			\pause
+			\item Domain Driven Design
+			\pause 
+			\item Monolithic
+			\pause
+			\item Service Oriented
+		\end{enumerate}
+	\end{frame}
+	
+	\begin{frame}{simple graph}
+		\begin{tikzpicture}
+			\draw[step=0.5cm] (0,0) grid (1.4, 1.4); 
+			\draw (0,0) -- (1.5, 0); 
+			\draw (0,0) -- (0, 1.5);
+		\end{tikzpicture}
+	\end{frame}
+	
+	\begin{frame}{Graphen}
+		\begin{tikzpicture}[scale=2]
+			\draw[red, thick] (0,0) -- (1,1) -- (2,0) -- (0,0); 
+			\draw[dashed] (3,0) rectangle (5,1) ; 
+			\draw (7, 0.5) circle (0.5); 	
+		\end{tikzpicture}
+	\end{frame}
+	
+	\begin{frame}{Knoten}
+		\begin{tikzpicture}
+			\node[draw] at (0,0) (k1) {knoten1}; 
+		\end{tikzpicture}
+	\end{frame}
+	
+	
+	\begin{frame}{beispiel-1}
+		\begin{center}
+		\begin{tikzpicture}
+			\fill[green] (0,0) circle (2); 
+			\draw[dashed, orange] (0,0) circle (4); 
+			\fill[orange] (0, 4) circle (0.3); 
+			\draw[->] (0,3.7) --node[right]{$\vec{F_g}$} (0,2); 
+			\draw[->] (-0.3,4) --node[above]{$\vec{F_g}$} (-1,3); 
+			
+		\end{tikzpicture}
+		\end{center}	
+	\end{frame}
+	
+	\begin{frame}{beispiel-2}
+		\begin{center}
+		\begin{tikzpicture}
+				
+		\end{tikzpicture}
+		\end{center}	
+	\end{frame}
+	
+	
+	\begin{frame}{Beispiel}
+		dieser Text wird auf der Folie angezeigt. :) 
+		\begin{itemize}
+			\item das ist das erste Element
+			\item und das ist das zweite Element
+		\end{itemize}
+		\begin{example}{fakulität}
+			\[ f(x) = x \dot f(x-1) \]
+			\[ sum(n) = \sum_{i=0}^{n} \frac{n \dot (n+1)}{n} \]
+			
+		\end{example}
+	\end{frame}
+	
+	\section{flowchart}
+	\begin{frame}{flowchart}
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}[node distance= 0.5cm and 0.2cm]
+				\node[fill=orange, circle] (start) {}; 
+				\node[fill=orange!20, rectangle, below=of start] (click) 	{Click}; 
+				\node[fill=green!20, rectangle, below right=of click] (auth) {authenticated}; 
+				\node[fill=red!20, rectangle, below left=of click] (notauth) {not authenticated}; 
+				\node[fill=orange, circle, below=of auth, radius=3cm] (end) {}; 
+				\draw[->] (start) -- (click) ; 
+				\draw[->] (click) -| (auth); 
+				\draw[->] (click) -| (notauth); 
+				\draw[->] (auth) -- (end) ; 
+				\draw[->] (notauth) -- (end); 
+			\end{tikzpicture}
+		\end{figure}
+	\end{frame}
+	
+	
+	
+	
+
+
+\end{document}
