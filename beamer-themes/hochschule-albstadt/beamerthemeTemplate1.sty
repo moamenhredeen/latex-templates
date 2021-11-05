@@ -1,15 +1,19 @@
 
+\mode <presentation>
+
 \DeclareOptionBeamer{hideothersubsections}{\PassOptionsToPackage{hideothersubsections}{beamerouterthemesidebar}}
 %\DeclareOptionBeamer{hideallsubsections}{\PassOptionsToPackage{hideallsubsections}{beamerouterthemesidebar}}
-\PassOptionsToPackage{left}{beamerouterthemesidebar}
-\PassOptionsToPackage{width=2cm}{beamerouterthemesidebar}
+\PassOptionsToPackage{right}{beamerouterthemesidebar}
+\PassOptionsToPackage{width=1.5cm}{beamerouterthemesidebar}
 \DeclareOptionBeamer{width}{\PassOptionsToPackage{width=#1}{beamerouterthemesidebar}}
 \DeclareOptionBeamer{left}{\PassOptionsToPackage{left}{beamerouterthemesidebar}}
 \DeclareOptionBeamer{right}{\PassOptionsToPackage{right}{beamerouterthemesidebar}}
 \ProcessOptionsBeamer
 
 
+
 \definecolor{cblue}{HTML}{00336a}
+
 
 \setbeamercolor{palette primary}{fg=white,bg=cblue}
 \setbeamercolor{primary}{fg=white, bg=cblue}\setbeamercolor{titlelike}{parent=palette primary}
@@ -19,13 +23,21 @@
 \setbeamercolor{structure}{fg=cblue}
 
 
-\makeatletter
+
 \setbeamertemplate{headline}
 {
-	\includegraphics[width=\textwidth]{headline_logo.png}
+	
+	%\includegraphics[width=\paperwidth]{headline_logo.png}
+%	\begin{tikzpicture}
+%		\fill[cblue] (current page.north west) rectangle ($(current page.north east) + (0, 35pt)$); 
+%		\node at (current page.north) {\includegraphics[width=2cm]{hs-albsig-logo.png}}; 
+%	\end{tikzpicture}
+	\begin{beamercolorbox}[wd =1cm, ht=1cm]{red}
+		
+	\end{beamercolorbox}
 }
 \setbeamertemplate{footline}{
-	\begin{beamercolorbox}[wd=\textwidth, ht=2mm, dp=1mm]{primary}
+	\begin{beamercolorbox}[wd=\textwidth, ht=2.5mm, dp=1mm]{primary}
 		\hspace{3mm} \inserttitle \hfill
 		\insertsection \hfill
 		\insertframenumber/\inserttotalframenumber \hspace{3mm}
@@ -36,84 +48,75 @@
 
 \setbeamertemplate{frametitle}
 {
-	\vspace{-9mm}\hspace{-20mm}\textcolor{white}{\insertframetitle}
+	\vspace*{-9mm}\textcolor{white}{\huge\insertframetitle}
 }
 
 \usefonttheme{structurebold}
 
 
 
-\setbeamertemplate{sections/subsections in toc}[sections numbered]
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}{\leavevmode\leftskip=3.2em\rlap{\hskip-2em\inserttocsectionnumber.\inserttocsubsectionnumber}\inserttocsubsection\par}
+%\setbeamertemplate{subsection in toc}[subsections numbered]
 
 
 
 \useoutertheme[height=0pt]{sidebar} % the selected section
 
-\setbeamercolor{palette sidebar primary}{fg=cblue, bg=white}
+\setbeamercolor{palette sidebar primary}{fg=white, bg=cblue}
 \setbeamercolor{palette sidebar secondary}{fg=cblue, bg=white}
 
 \setbeamercolor*{section in sidebar}{parent=palette sidebar primary}
 \setbeamercolor*{subsection in sidebar}{parent=palette sidebar primary}
 
+\makeatletter
 \setbeamertemplate{sidebar \beamer@sidebarside}{
-	\vspace{-1mm}
+	\vspace*{10pt}
     \beamer@tempdim=\beamer@sidebarwidth%
     \insertverticalnavigation{\beamer@sidebarwidth}%
 }
 
-\setbeamertemplate{sidebar canvas \beamer@sidebarside}[horizontal shading][left=cblue,right=cblue]
-
-
-
-
-
-\setbeamertemplate{title page}{
-	\vspace{-10mm}  
-  \begin{minipage}[b][\paperheight]{\textwidth}
-
-    \ifx\inserttitlegraphic\@empty
-    \else\usebeamertemplate*{title graphic}
-    \fi
-    \vfill%
-
-    \ifx\inserttitle\@empty
-    \else\usebeamertemplate*{title}
-    \fi
-    
-    \ifx\insertsubtitle\@empty
-    \else\usebeamertemplate*{subtitle}
-    \fi
-    
-    \usebeamertemplate*{title separator}
-    
-    \ifx\beamer@shortauthor\@empty
-    \else\usebeamertemplate*{author}
-    \fi
-    
-    \ifx\insertdate\@empty
-    \else\usebeamertemplate*{date}
-    \fi
-    
-    \ifx\insertinstitute\@empty
-    \else\usebeamertemplate*{institute}
-    \fi
-    
-    \vfill
-    \vspace*{1mm}
-  \end{minipage}
-}
-
-\setbeamertemplate{title}{
-%  \raggedright%  % <-- Comment here
-  \linespread{1.0}%
-  \inserttitle%
-  \par%
-  \vspace*{0.5em}
-}
-\setbeamertemplate{subtitle}{
-%  \raggedright%  % <-- Comment here
-  \insertsubtitle%
-  \par%
-  \vspace*{0.5em}
-}
+\setbeamertemplate{sidebar canvas \beamer@sidebarside}[horizontal shading][left=white,right=white]
 \makeatother
+
+
+
+\setbeamertemplate{title page}{%
+	\hspace*{-16.6pt}
+	\begin{tikzpicture}
+		\coordinate (C) at (current page.center); 
+		\coordinate (N) at (current page.north); 
+		\coordinate (S) at (current page.south); 
+		\coordinate (SW) at (current page.south west);
+		\coordinate (SE) at (current page.south east);
+		\coordinate (NW) at (current page.north west);
+		\coordinate (NE) at (current page.north east);
+		\fill[white] (SW) -- (NW) -- (NE) -- (SE) -- cycle; 
+		\node[fill=cblue!10, minimum width=.6\paperwidth, inner sep=10pt, align=center] at (C)  (heading)%
+		{\textbf{\Huge Software Architektur}\\%
+			\vspace*{3pt}\\
+			\textbf{Design Patterns and Best Practices}}; 
+		\node at ($ (C) + (0, 3cm)$) {\includegraphics[width=5cm]{hs-albsig-logo.png}}; 
+		\draw[line width=1pt, cblue] (heading.north west) -- (heading.north east); 
+		\draw[line width=1pt, cblue] ($ (heading.north west) + (0, 1.5pt)$) -- ($(heading.north east) + (0, 1.5pt)$); 
+		\draw[line width=1pt, cblue] (heading.south west) -- (heading.south east); 
+		\draw[line width=1pt, cblue] ($ (heading.south west) - (0, 1.5pt)$) -- ($(heading.south east) - (0, 1.5pt)$);
+		\node[below = 2cm, text=cblue] at (heading) (author) {
+			\begin{columns}
+				\begin{column}{.2\paperwidth}
+					\centering
+					\textit{Student}\\
+					\textbf{Moamen Hraden}
+				\end{column}
+				\begin{column}{.2\paperwidth}
+					\centering
+					\textit{Professor}\\
+					\textbf{Christen Henrich}
+				\end{column}
+			\end{columns}
+		} ; 
+		\node [below=1cm, fill=cblue, text=white, rounded corners] at (author)  {\tiny\today}; 
+	\end{tikzpicture}
+}
+
+\mode <all>
